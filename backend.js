@@ -11,6 +11,7 @@ function getGeoCode(address){
 		GOOGLE_GEOCODE_API_KEY = contents;
 		console.log(contents);
 
+		if (err) throw err;
 
 
 
@@ -23,7 +24,7 @@ function getGeoCode(address){
 
 		var options = {
 			host: 'maps.googleapis.com',
-			port: 80,
+			port: 443,
 			path: google_api_path
 		};
 
@@ -33,7 +34,7 @@ function getGeoCode(address){
 
 
 		console.log(google_api_url);
-		http.get(options, function(resource) {
+		https.get(options, function(resource) {
 			//console.log(resource);
 			var body = '';
 			resource.on('data', function(packet){
@@ -43,6 +44,7 @@ function getGeoCode(address){
 			resource.on('end', function(){
 				var googleMapsData = JSON.parse(body);
 				console.log(googleMapsData);
+				return googleMapsData;
 			});
 		}).on('error', function(e){
 			console.log("Error in loading Geocode: ", e)
@@ -51,7 +53,7 @@ function getGeoCode(address){
 	});
 }
 
-getGeoCode("1600 Amphitheatre Parkway, Mountain View, CA")
+console.log("Mason:" + getGeoCode("1600 Amphitheatre Parkway, Mountain View, CA"));
 
 http.createServer(function(request, response) {
     response.writeHead(200);
