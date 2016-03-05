@@ -10,6 +10,12 @@ http.createServer(function(request, response) {
     response.writeHead(200);
         //response.write("<h1>Hello World</h1>");
 
+    fs.readFile('page.html', function(err, contents){
+    	response.writeHead(200);
+		response.write(contents);
+		response.end();
+	});
+
     if (request.method == 'POST') {
     	console.log("POST");
     	var body = '';
@@ -17,16 +23,12 @@ http.createServer(function(request, response) {
     		body += packet;
     	});
     	request.on('end', function() {
-    		console.log("POST: " + body);
+    		console.log("POST received: " + body);
     	});
-    	response.writeHead(200);
-		response.end('post received');
     }
     else
     {
-    	console.log("GET");
-  		response.writeHead(200);
-		response.end('get received');
+    	console.log("GET received");
 
     }
 
