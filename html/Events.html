@@ -3,15 +3,15 @@
       <div class="col-sm-8 col-md-offset-2">
         <div class="row" ng-app="events" ng-controller="eventscontroller">
           <div class="col-xs-4 col-sm-4 left smleftcol">
-            <form action="process_get" method="GET"
-                <h3>Filters:</h3>
+            <form action="process_get" method="GET">
+                <h3>Filters</h3>
                 <div class="filters" ng-app="filters" ng-controller="filtercontrol">
                     <p>Event Name: <input class="linput" type="text" ng-model="EventNameIn"></p>
                     <p>Event Date: <input class="linput" type="text" ng-model="SIn"></p>
                     <p>Event Location: <input class="linput"  type="text" ng-model="LocationIn"></p>
                     <p>Organizer: <input class="linput" type="text" ng-model="OrganizerIn"></p>
                 </div>
-                <input type="submit" values="Submit">
+                <input class="filterbtn" type="submit" values="Submit">
             </form>
           </div>
           <div class="col-xs-7 col-sm-7 lrrightcol">

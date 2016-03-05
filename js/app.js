@@ -65,4 +65,8 @@ $(document).ready(function(){
 		$('#loader').load("html/Main.html")
 		$('.linav').removeClass('active');
 	});
+	$('#host').click(function(){
+		$('#loader').load("html/EventAdmin.html");
+		$('.linav').removeClass('active');
+	});
 });
