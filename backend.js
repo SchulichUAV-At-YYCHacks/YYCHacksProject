@@ -9,7 +9,8 @@ var GOOGLE_GEOCODE_API_KEY = "YOUR_API_KEY";
 function getGeoCode(address){
 	fs.readFile('geocodeAPIKey.log', function(err, contents) {
 		GOOGLE_GEOCODE_API_KEY = contents;
-		//console.log(contents);
+		console.log(contents);
+
 
 		if (err) throw err;
 
@@ -20,7 +21,8 @@ function getGeoCode(address){
 
 		var google_api_path = '/maps/api/geocode/json?address=' + address.split(' ').join('+') + '&key=' + GOOGLE_GEOCODE_API_KEY;
 
-		//console.log(google_api_path);
+		console.log(google_api_path);
+
 
 		var options = {
 			host: 'maps.googleapis.com',
@@ -28,7 +30,9 @@ function getGeoCode(address){
 			path: google_api_path
 		};
 
-		//console.log(options.path);
+
+		console.log(options.path);
+
 
 		var google_api_url = "https://" + options.host + google_api_path;
 
@@ -43,11 +47,12 @@ function getGeoCode(address){
 
 			resource.on('end', function(){
 				var googleMapsData = JSON.parse(body);
-				//console.log(googleMapsData);
+
+				console.log(googleMapsData);
 				return googleMapsData;
 			});
 		}).on('error', function(e){
-			//console.log("Error in loading Geocode: ", e)
+			console.log("Error in loading Geocode: ", e)
 		});
 
 	});
@@ -67,6 +72,7 @@ http.createServer(function(request, response) {
 }).listen(portNo);
 
 console.log('Check Port ' + portNo + '....');
+
 
 
 
