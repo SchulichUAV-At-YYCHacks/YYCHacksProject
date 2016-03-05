@@ -1,0 +1,26 @@
+.lrrightcol {
+    background-color: lightgray;
+    border: 3px solid lightgray;
+    border-radius: 30px;
+}
+
+h3{
+    padding-top: 0px;
+    margin-top: 7px;
+}
+
+.linput {
+    float:right;
+    clear:both;
+}
+
+.smleftcol {
+    background-color: lightgray;
+    margin-right: 10px;
+    border: 3px solid lightgray;
+    border-radius: 30px;
+}
+
+.filters {
+    margin-bottom:10px;
+}
