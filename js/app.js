@@ -27,29 +27,37 @@ events.controller('eventscontroller', function($scope, $http) {
 });
 
 $(document).ready(function(){
+	$('#loader').load('html/Main.html')
+	$('.linav').removeClass('active');
 	$('#event').click(function(){
-		$('#loader').load("html/Events.html")
+		$('#loader').load("html/Events.html");
+		$('.linav').removeClass('active');
+		$('#event').addClass('active');
 	});
 	$('#org').click(function(){
-		$('#loader').load("html/Organizations.html")
+		$('#loader').load("html/Organizers.html");
+		$('.linav').removeClass('active');
+		$('#org').addClass('active');
 	});
 	$('#map').click(function(){
-		$('#loader').load("html/map.html")
+		$('#loader').load("html/map.html");
+		$('.linav').removeClass('active');
+		$('#map').addClass('active');
 	});
 	$('#myEvents').click(function(){
 		$('#loader').load("html/MyEvents.html")
+		$('.linav').removeClass('active');
 	});
 	$('#myOrgs').click(function(){
 		$('#loader').load("html/MyOrganizations.html")
+		$('.linav').removeClass('active');
 	});
 	$('#uEvents').click(function(){
 		$('#loader').load("html/UpcomingEvents.html")
+		$('.linav').removeClass('active');
 	});
 	$('#brandarea').click(function(){
 		$('#loader').load("html/Main.html")
-	});
-	$('.nav-list').on('click', 'li', function() {
-    	$('.nav-list li.active').removeClass('active');
-    	$(this).addClass('active');
+		$('.linav').removeClass('active');
 	});
 });

@@ -3,11 +3,7 @@
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
-require('./js/jquery-1.12.1.min.js');
-require('./js/angular.min.js');
-require('./js/app.js');
-
-require('./js/bootstrap.min.js');
+var express = require('express');
 
 var portNo = 8081;
 var GOOGLE_GEOCODE_API_KEY = "YOUR_API_KEY";
