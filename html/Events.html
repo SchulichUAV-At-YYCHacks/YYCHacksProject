@@ -1,0 +1,16 @@
+<div id="events">
+    <div class="row">
+      <div class="col-sm-8 col-md-offset-2">
+        <div class="row" ng-app="events" ng-controller="eventscontroller">
+          <div class="col-xs-4 col-sm-4 left">
+            Filters Go HERE!
+          </div>
+          <div class="col-xs-8 col-sm-8">
+            <div ng-repeat="event in collection track by event.UIDEvent">
+                {{event.EventName}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
