@@ -11,6 +11,11 @@ data.config(function($routeProvider){
 	$routeProvider
 });
 
+var filters = angular.module('filters', [])
+filters.controller('filtercontrol', function($scope){
+	console.log($scope.EventNameIn)
+});
+
 var events = angular.module('events', []);
 events.controller('eventscontroller', function($scope, $http) {
 	$scope.sendData = function() {
