@@ -3,6 +3,9 @@
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
+require(./js/bootstrap.min.js)
+
+
 var portNo = 8081;
 var GOOGLE_GEOCODE_API_KEY = "YOUR_API_KEY";
 
