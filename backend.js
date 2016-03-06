@@ -4,6 +4,14 @@ var http = require('http');
 var https = require('https');
 var fs = require('fs');
 
+var mysql = require("mysql");
+var conn = mysql.createConnection({
+	host:"localhost",
+	user:"root",
+	password:"UAV_HACKS",
+	database:"yychacksdb"
+});
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
@@ -40,17 +48,27 @@ app.post('/organization_query',function(req,res){
 });
 
 app.post('/authin',function(req,res){
-  conn.query('CALL User_Select(?)', req.body.UserContactIN, function(err, rows, fields) {
+	console.log(req.body.UserContactIN)
+  conn.query('CALL User_Select(?)', req.body.UserContactIN.toString(), function(err, rows, fields) {
 	if (!err)
 	{
 		console.log('The solution is: ', rows);
-		if (rows > 0){
-			conn.query('CALL User_Insert(?)', req.body);
+		if (rows[0].length == 0){
+			console.log("second")
+			conn.query("CALL User_Insert('" + req.body.UserNameIN.toString() + "','" + req.body.UserContactIN.toString() + "','" + req.body.TokenID.toString()+"')" ,function(err, rows, fields){
+				if (!err) {
+					console.log("User added");
+				}
+				else {
+					console.log(err)
+					console.log("Failed")
+				}
+			});
 		}
-	}
-	  
-	else
+	} else {
+		console.log(err)
 	  console.log('Error in query');
+	}
   });
   console.log(req.body);
   res.end("yes");
@@ -154,13 +172,7 @@ console.log('Check Port ' + portNo + '....');
 
 
 
-var mysql = require("mysql");
-var conn = mysql.createConnection({
-	host:"localhost",
-	user:"root",
-	password:"UAV_HACKS",
-	database:"yychacksdb"
-});
+
 
 conn.connect(function(err){
 	if(err){
@@ -171,14 +183,14 @@ conn.connect(function(err){
 })
 
 
-conn.query('CALL User_Select(?)', "calderk2010@gmail.com", function(err, rows, fields) {
-	if (!err)
-		console.log('The solution is: ', rows);
-	else
-		console.log('Error in query');
-});
+//conn.query('CALL User_Select(?)', "calderk2010@gmail.com", function(err, rows, fields) {
+//	if (!err)
+//		console.log('The solution is: ', rows);/
+	//else
+	//	console.log('Error in query');
+//});
 
-conn.end(function(err){});
+//conn.end(function(err){});
 
 
 /*
