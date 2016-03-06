@@ -28,3 +28,7 @@ h3{
 .filterbtn {
     margin-bottom:10px;
 }
+
+body {
+    padding-top = 0px;
+}
