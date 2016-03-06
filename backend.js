@@ -3,8 +3,67 @@
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
-var portNo = 8080;
+
+var express = require("express");
+var bodyParser = require("body-parser");
+var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+var portNo = 8081;
 var GOOGLE_GEOCODE_API_KEY = "YOUR_API_KEY";
+
+app.use('/', express.static(__dirname+'/'));
+
+
+app.get('/',function(req,res){
+  res.sendfile("index.html");
+});
+
+
+app.post('/event_submit',function(req,res){
+  var event_name=req.body.event_name;
+  var event_date=req.body.event_date;
+  var location=req.body.location;
+  var organizer=req.body.organizer;
+
+  console.log(req.body);
+  res.end("yes");
+});
+
+
+app.listen(portNo, function() { 
+	console.log('Check Port ' + portNo + '....');
+});
+
+/*
+app.post('/', rawParser, function(request, response){
+  console.log(request.body.eventt.name);      // your JSON
+});
+*/
+/*
+app.post('/', function (req, res) {
+	res.send('POST');
+	console.log('POST');
+});
+*/
+
+
+/*
+http.createServer(function(request, response) {
+    response.writeHead(200);
+        //response.write("<h1>Hello World</h1>");
+    fs.readFile('auth.html', function(err, contents){
+    	response.writeHead(200);
+		response.write(contents);
+		response.end();
+	});
+
+}).listen(portNo);
+*/
+
+
+
 
 function getGeoCode(address){
 	fs.readFile('geocodeAPIKey.log', function(err, contents) {
@@ -58,18 +117,9 @@ function getGeoCode(address){
 	});
 }
 
-//console.log("Mason:" + getGeoCode("1600 Amphitheatre Parkway, Mountain View, CA"));
+console.log("Mason:" + getGeoCode("1600 Amphitheatre Parkway, Mountain View, CA"));
 
-http.createServer(function(request, response) {
-    response.writeHead(200);
-        //response.write("<h1>Hello World</h1>");
-    fs.readFile('auth.html', function(err, contents){
-    	response.writeHead(200);
-		response.write(contents);
-		response.end();
-	});
 
-}).listen(portNo);
 
 console.log('Check Port ' + portNo + '....');
 
@@ -112,3 +162,6 @@ fs.readFile(google_api_url,
 			console.log(contents);
 });
 */
+
+
+
