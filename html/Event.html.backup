@@ -1,0 +1,17 @@
+<div id="event">
+    <div class="row">
+      <div class="col-sm-8 col-md-offset-2">
+        <div class="row">
+          <div class="col-xs-8 col-sm-8 left">
+            <h1>{{EventName}}</h1>
+            <h2>{{StartDT}} - {{EndDT}} at {{LocationName}}</h2>
+            <p> {{EventDesc}} </p>
+          </div>
+          <div class="col-xs-4 col-sm-4">
+            <div id="mapload">  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
