@@ -3,46 +3,8 @@
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
-var express = require('express');
-app = express();
-
-
-var portNo = 8081;
+var portNo = 8080;
 var GOOGLE_GEOCODE_API_KEY = "YOUR_API_KEY";
-
-
-app.use('/', express.static(__dirname+'/'));
-
-app.get('/process_get', function(req,res) {
-	res.send('GET');
-	console.log('GET' + res);
-});
-
-app.post('/', function (req, res) {
-	res.send('POST');
-	console.log('POST');
-});
-
-
-app.listen(portNo, function() { 
-	console.log('Check Port ' + portNo + '....');
-});
-
-/*
-http.createServer(function(request, response) {
-    response.writeHead(200);
-        //response.write("<h1>Hello World</h1>");
-    fs.readFile('auth.html', function(err, contents){
-    	response.writeHead(200);
-		response.write(contents);
-		response.end();
-	});
-
-}).listen(portNo);
-*/
-
-
-
 
 function getGeoCode(address){
 	fs.readFile('geocodeAPIKey.log', function(err, contents) {
@@ -96,9 +58,18 @@ function getGeoCode(address){
 	});
 }
 
-console.log("Mason:" + getGeoCode("1600 Amphitheatre Parkway, Mountain View, CA"));
+//console.log("Mason:" + getGeoCode("1600 Amphitheatre Parkway, Mountain View, CA"));
 
+http.createServer(function(request, response) {
+    response.writeHead(200);
+        //response.write("<h1>Hello World</h1>");
+    fs.readFile('auth.html', function(err, contents){
+    	response.writeHead(200);
+		response.write(contents);
+		response.end();
+	});
 
+}).listen(portNo);
 
 console.log('Check Port ' + portNo + '....');
 
@@ -141,6 +112,3 @@ fs.readFile(google_api_url,
 			console.log(contents);
 });
 */
-
-
-
