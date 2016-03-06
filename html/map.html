@@ -15,14 +15,14 @@
           center: {lat: 51.0486, lng: -114.0708},
           zoom: 10
         });
-      }
-      $.get('\mapdata', function(data, status){
-        console.log(data);
+        $.get('/mapdata', function(data, status)
+        {
 
-      })
+        });
 
-      var mapObjects;
-      for (var i = 0; i < data.length(); i++)
+        var data = [{LocationLat: 51.0486, LocationLong: -114.0708, LocationName: 'Calgary', LocationAddr: 'HI'}];
+        var mapObjects = [];
+      for (var i = 0; i < data.length; i++)
       {
         var tempLoc = {lat: data[i].LocationLat, lng: data[i].LocationLong};
 
@@ -36,25 +36,34 @@
         });
         mapObjects.push(marker);
         mapObjects[i].addListener('click', function() {
-          map.setZoom(11);
+          map.setZoom(14);
           map.setCenter(marker.getPosition());
         });
-
-
-      }
-
-
-      map.addListener('center_changed', function() {
+        map.addListener('center_changed', function() {
         // 3 seconds after the center of the map has changed, pan back to the
         // marker.
         window.setTimeout(function() {
           map.panTo(marker.getPosition());
         }, 3000);
       });
+      }
+      /*$.get('/mapdata', function(data, status){
+        console.log(data);
+
+      });*/
+  
+      
+
+      }
+
+
+      
+
 
       
 
     </script>
     <script type="text/javascript" src="../js/jquery-1.12.1.min.js"></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP1pQOo7x8Mzx_VGZusccwjPczWrZ5Sgs&callback=initMap"
     async defer></script>
