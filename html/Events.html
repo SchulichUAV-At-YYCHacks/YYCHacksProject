@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-sm-8 col-md-offset-2">
         <div class="row" ng-app="events" ng-controller="eventscontroller">
-          <div class="col-xs-4 col-sm-4 left smleftcol">
+          <div class="col-xs-4 col-sm-4 left well">
             <!--<form action="localhost:8081/event_submit" method="POST">-->
                 <h3>Filters</h3>
                 <div class="filters" ng-app="filters" ng-controller="filtercontrol">
@@ -40,8 +40,11 @@
             <!--</form>-->
           </div>
           <div class="col-xs-7 col-sm-7 lrrightcol">
-            <div ng-repeat="event in collection track by event.UIDEvent">
-                {{event.EventName}}
+            <div ng-repeat="event in collection track by event.UIDEvent" class="eventitem">
+                <h3>{{EventName}}</h1>
+                <h4>{{StartDT}} - {{EndDT}} at {{LocationName}} for {{EventEXP}} </h4>
+                <p> {{EventDescShort}} </p>
+                <hr>
             </div>
           </div>
         </div>

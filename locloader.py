@@ -4,7 +4,7 @@ import csv
 
 db=_mysql.connect("localhost","root","UAV_HACKS","yychacksdb")
 
-with open('cs.csv', 'r') as f:
+with open('ca.csv', 'r') as f:
 	reader = csv.reader(f)
 	for row in reader:
 		g = geocoder.google(row[2])
