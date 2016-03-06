@@ -77,7 +77,9 @@ app.post('/authin',function(req,res){
 var mappins;
 
 conn.query('CALL Location_SelectAll(1)', function(err, rows, fields){
-	mappins = rows
+	app.get('/mapdata' ,function(req,res){
+		res.send(rows[0]);
+	});
 });
 app.listen(portNo, function() { 
 	console.log('Check Port ' + portNo + '....');
