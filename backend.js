@@ -32,6 +32,13 @@ app.post('/event_submit',function(req,res){
 });
 
 
+app.post('/organization_query',function(req,res){
+  var organization_name=req.body.organization_name;
+
+  console.log(req.body);
+  res.end("yes");
+});
+
 app.listen(portNo, function() { 
 	console.log('Check Port ' + portNo + '....');
 });

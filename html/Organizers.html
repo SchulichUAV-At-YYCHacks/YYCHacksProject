@@ -3,13 +3,28 @@
       <div class="col-sm-8 col-md-offset-2">
         <div class="row" ng-app="events" ng-controller="eventscontroller">
           <div class="col-xs-4 col-sm-4 left smleftcol">
-            <form action="/" method="POST">
+            <!--<form action="/" method="POST">-->
                 <h3>Filters</h3>
                 <div class="filters" ng-app="filters" ng-controller="filtercontrol">
-                    <p>Organization Name: <input class="linput" type="text" ng-model="EventNameIn" name="eventt[name]"></p>
+                    <p>Organization Name: <input id="organization_name" class="linput" type="text" ng-model="EventNameIn" name="eventt[name]"></p>
                 </div>
-                <input class="filterbtn" type="submit" values="Submit">
-            </form>
+                <input id="submit" class="filterbtn" type="submit" values="Submit">
+                <script>
+                console.log("Loaded");
+                $(document).ready(function(){
+                    var organization_name;
+                    console.log("Ready");
+                    $("#submit").click(function(){
+                      organization_name=$("#organization_name").val();
+                      console.log("Post");
+                      console.log(organization_name);
+                      $.post("/organization_query",{
+                        organization_name: organization_name}
+                      );
+                    });
+                  });
+                </script>
+            <!--</form>-->
           </div>
           <div class="col-xs-7 col-sm-7 lrrightcol">
             <div ng-repeat="event in collection track by event.UIDEvent">

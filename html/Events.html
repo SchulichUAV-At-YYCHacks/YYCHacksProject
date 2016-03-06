@@ -24,11 +24,13 @@
                 console.log("Loaded");
                 $(document).ready(function(){
                     var event_name, event_date, location, organizer;
+                    console.log("Ready");
                     $("#submit").click(function(){
                       event_name=$("#event_name").val();
                       event_date=$("#event_date").val();
                       location=$('#location').val();
                       organizer=$('#organizer').val();
+                      console.log("Posting");
                       $.post("/event_submit",{event_name: event_name, event_date: event_date, location: location, organizer: organizer}
                       );
                     });
