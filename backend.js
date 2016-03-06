@@ -12,6 +12,14 @@ var conn = mysql.createConnection({
 	database:"yychacksdb"
 });
 
+conn.connect(function(err){
+	if(err){
+		console.log('Error connecting to DB');
+		return;
+	}
+	console.log('Connected')
+})
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
@@ -189,13 +197,6 @@ console.log('Check Port ' + portNo + '....');
 
 
 
-conn.connect(function(err){
-	if(err){
-		console.log('Error connecting to DB');
-		return;
-	}
-	console.log('Connected')
-})
 
 
 //conn.query('CALL User_Select(?)', "calderk2010@gmail.com", function(err, rows, fields) {
