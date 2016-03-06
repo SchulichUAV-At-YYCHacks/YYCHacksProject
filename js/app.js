@@ -48,6 +48,8 @@ $(document).ready(function(){
 		$('#loader').load("html/map.html");
 		$('.linav').removeClass('active');
 		$('#map').addClass('active');
+		var test = $(window).height();
+		$('#loader').height(test);
 	});
 	$('#myEvents').click(function(){
 		$('#loader').load("html/MyEvents.html")
