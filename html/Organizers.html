@@ -1,0 +1,22 @@
+<div id="events">
+    <div class="row">
+      <div class="col-sm-8 col-md-offset-2">
+        <div class="row" ng-app="events" ng-controller="eventscontroller">
+          <div class="col-xs-4 col-sm-4 left smleftcol">
+            <form action="/" method="POST">
+                <h3>Filters</h3>
+                <div class="filters" ng-app="filters" ng-controller="filtercontrol">
+                    <p>Organization Name: <input class="linput" type="text" ng-model="EventNameIn" name="eventt[name]"></p>
+                </div>
+                <input class="filterbtn" type="submit" values="Submit">
+            </form>
+          </div>
+          <div class="col-xs-7 col-sm-7 lrrightcol">
+            <div ng-repeat="event in collection track by event.UIDEvent">
+                {{organization.OrgName}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
