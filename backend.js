@@ -47,8 +47,11 @@ app.post('/organization_query',function(req,res){
   res.end("yes");
 });
 
+var user 
+
 app.post('/authin',function(req,res){
 	console.log(req.body.UserContactIN)
+	user = req.body.UserContactIN
   conn.query('CALL User_Select(?)', req.body.UserContactIN.toString(), function(err, rows, fields) {
 	if (!err)
 	{
@@ -72,6 +75,11 @@ app.post('/authin',function(req,res){
   });
   console.log(req.body);
   res.end("yes");
+  conn.query('CALL User_Select(?)', user.toString(), function(err, rows, fields){
+	  app.post('/user',function(req,res){
+	  	res.send(rows[0])
+	  });
+	});
 });
 
 var mappins;

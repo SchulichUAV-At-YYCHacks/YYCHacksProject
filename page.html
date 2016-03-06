@@ -43,7 +43,7 @@
                   <button id="host" type="submit" class="btn btn-default pull-left">Host Event</button>
                 </form>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" > Signed in as: {{UserName}} <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" > Signed in as: {{User.UserName}} <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li id="myEvents"><a href="#">My Hosted Events</a></li>
                     <li id="myOrgs"><a href="#">My Organizations</a></li>
@@ -53,7 +53,7 @@
                     <li><a href="#">Sign Out</a></li>
                   </ul>
                 </li>
-                <li><a>XP: {{UserExp}}</a></li>
+                <li><a>XP: {{User.UserEXP}}</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -67,7 +67,7 @@
     <div id="footer-wrapper">
     
     </div>
-
+    
 
 </body>
 </html>

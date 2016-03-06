@@ -1,9 +1,10 @@
 //app.js
 
 var user = angular.module('user', [])
-user.controller('userctrl', function($scope){
-	$scope.UserName = "Calder Kitagawa";
-	$scope.UserExp = 1000;
+user.controller('userctrl', function($scope, $http){
+	$http.post('/user', data).success(function(data, status) {
+        $scope.User = data[0];
+    });
 });
 
 var data = angular.module('data', ['angular-route'])
