@@ -3,13 +3,13 @@
       <div class="col-sm-8 col-md-offset-2">
         <div class="row" ng-app="events" ng-controller="eventscontroller">
           <div class="col-xs-4 col-sm-4 left smleftcol">
-            <form action="process_get" method="GET">
+            <form action="/" method="POST">
                 <h3>Filters</h3>
                 <div class="filters" ng-app="filters" ng-controller="filtercontrol">
-                    <p>Event Name: <input class="linput" type="text" ng-model="EventNameIn"></p>
-                    <p>Event Date: <input class="linput" type="text" ng-model="SIn"></p>
-                    <p>Event Location: <input class="linput"  type="text" ng-model="LocationIn"></p>
-                    <p>Organizer: <input class="linput" type="text" ng-model="OrganizerIn"></p>
+                    <p>Event Name: <input class="linput" type="text" ng-model="EventNameIn" name="eventt[name]"></p>
+                    <p>Event Date: <input class="linput" type="text" ng-model="SIn" name="eventt[SIn]"></p>
+                    <p>Event Location: <input class="linput"  type="text" ng-model="LocationIn" name="eventt[LocIn]"></p>
+                    <p>Organizer: <input class="linput" type="text" ng-model="OrganizerIn" name="eventt[Org]"></p>
                 </div>
                 <input class="filterbtn" type="submit" values="Submit">
             </form>
