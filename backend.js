@@ -39,6 +39,23 @@ app.post('/organization_query',function(req,res){
   res.end("yes");
 });
 
+app.post('/authin',function(req,res){
+  conn.query('CALL User_Select(?)', req.body.UserContactIN, function(err, rows, fields) {
+	if (!err)
+	{
+		console.log('The solution is: ', rows);
+		if (rows > 0){
+			conn.query('CALL User_Insert(?)', req.body);
+		}
+	}
+	  
+	else
+	  console.log('Error in query');
+  });
+  console.log(req.body);
+  res.end("yes");
+});
+
 app.listen(portNo, function() { 
 	console.log('Check Port ' + portNo + '....');
 });
@@ -153,7 +170,8 @@ conn.connect(function(err){
 	console.log('Connected')
 })
 
-conn.query('SELECT * FROM USERS', function(err, rows, fields) {
+
+conn.query('CALL User_Select(?)', "calderk2010@gmail.com", function(err, rows, fields) {
 	if (!err)
 		console.log('The solution is: ', rows);
 	else
