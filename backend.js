@@ -74,6 +74,13 @@ app.post('/authin',function(req,res){
   res.end("yes");
 });
 
+var mappins;
+
+conn.query('CALL Location_SelectAll(1)', function(err, rows, fields){
+	app.get('/mapdata' ,function(req,res){
+		res.send(rows[0]);
+	});
+});
 app.listen(portNo, function() { 
 	console.log('Check Port ' + portNo + '....');
 });
