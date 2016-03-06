@@ -16,6 +16,45 @@
           zoom: 10
         });
       }
+      $.get('\mapdata', function(data, status){
+        console.log(data);
+
+      })
+
+      var mapObjects;
+      for (var i = 0; i < data.length(); i++)
+      {
+        var tempLoc = {lat: data[i].LocationLat, lng: data[i].LocationLong};
+
+        ///data[i].LocationAddr
+        
+
+        var marker = new google.maps.Marker({
+          position: tempLoc,
+          map: map,
+          title: data[i].LocationName
+        });
+        mapObjects.push(marker);
+        mapObjects[i].addListener('click', function() {
+          map.setZoom(11);
+          map.setCenter(marker.getPosition());
+        });
+
+
+      }
+
+
+      map.addListener('center_changed', function() {
+        // 3 seconds after the center of the map has changed, pan back to the
+        // marker.
+        window.setTimeout(function() {
+          map.panTo(marker.getPosition());
+        }, 3000);
+      });
+
+      
+
     </script>
+    <script type="text/javascript" src="../js/jquery-1.12.1.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP1pQOo7x8Mzx_VGZusccwjPczWrZ5Sgs&callback=initMap"
     async defer></script>
